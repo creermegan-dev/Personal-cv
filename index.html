@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Megan Creer | Personal CV</title>
+
+    <style>
+      /* Shared pink theme */
+      :root {
+        --accent: #8a2851;
+        --text: #36252d;
+        --muted: #70515f;
+        --line: #edbfd0;
+        --soft: #fce7ef;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 40px 20px;
+        background: #722b48;
+        color: var(--text);
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .cv {
+        max-width: 1050px;
+        margin: auto;
+        background: #fff7fa;
+        border-top: 7px solid #bc4877;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 14px 40px rgba(40, 15, 25, 0.2);
+      }
+
+      /* Name and photo */
+      .hero {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+        padding: 40px 48px;
+        background: linear-gradient(120deg, #f5bfd3, #fce4ed);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .profile-photo {
+        width: 160px;
+        height: 160px;
+        flex-shrink: 0;
+        object-fit: cover;
+        border: 5px solid #fff7fa;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(138, 40, 81, 0.15);
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        color: #70203f;
+        font-family: Georgia, serif;
+        font-size: clamp(36px, 5vw, 52px);
+        font-weight: 400;
+        line-height: 1.15;
+      }
+
+      .role {
+        margin: 12px 0 6px;
+        color: var(--accent);
+        font-size: 19px;
+        font-weight: 600;
+      }
+
+      .student-details {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* Two-column layout */
+      .layout {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        min-width: 0;
+        padding: 32px;
+        background: #f9dce7;
+        border-right: 1px solid var(--line);
+      }
+
+      .content {
+        min-width: 0;
+        padding: 32px 40px;
+        background: #fff7fa;
+      }
+
+      section + section {
+        margin-top: 30px;
+      }
+
+      h2 {
+        margin: 0 0 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--line);
+        color: var(--accent);
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      p {
+        margin: 0 0 12px;
+      }
+
+      a {
+        color: var(--accent);
+        text-underline-offset: 4px;
+        overflow-wrap: anywhere;
+      }
+
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      /* Contact details */
+      .contact-list {
+        margin: 0;
+      }
+
+      .contact-list dt {
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .contact-list dt:first-child {
+        margin-top: 0;
+      }
+
+      .contact-list dd {
+        margin: 3px 0 0;
+        font-size: 14px;
+        overflow-wrap: anywhere;
+      }
+
+      /* Education */
+      .degree {
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .muted {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* Technical skills */
+      .skill-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .skill-list li {
+        padding: 14px 16px;
+        background: var(--soft);
+        border-left: 3px solid #c65381;
+        border-radius: 0 8px 8px 0;
+        overflow-wrap: anywhere;
+      }
+
+      .skill-list strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .skill-list span {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* Professional skills */
+      .professional-skills {
+        margin: 0;
+        padding-left: 20px;
+        font-size: 14px;
+      }
+
+      .professional-skills li {
+        margin-bottom: 8px;
+      }
+
+      .professional-skills li::marker {
+        color: var(--accent);
+      }
+
+      footer {
+        padding: 18px 32px;
+        background: #f5cede;
+        border-top: 1px solid var(--line);
+        color: #70203f;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      /* Mobile layout */
+      @media screen and (max-width: 720px) {
+        body {
+          padding: 16px;
+        }
+
+        .hero {
+          flex-direction: column;
+          gap: 22px;
+          padding: 32px 24px;
+          text-align: center;
+        }
+
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .sidebar,
+        .content {
+          padding: 28px 24px;
+        }
+      }
+
+      @media screen and (max-width: 420px) {
+        .skill-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Print layout */
+      @media print {
+        body {
+          padding: 0;
+          background: white;
+          font-size: 12px;
+        }
+
+        .cv {
+          max-width: none;
+          border-radius: 0;
+          overflow: visible;
+          box-shadow: none;
+        }
+
+        .hero {
+          padding: 24px;
+        }
+
+        .profile-photo {
+          width: 120px;
+          height: 120px;
+          box-shadow: none;
+        }
+
+        .layout {
+          grid-template-columns: 35% 65%;
+        }
+
+        .sidebar,
+        .content {
+          padding: 20px;
+        }
+
+        section {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="cv">
+      <!-- Name and profile photo -->
+      <header class="hero">
+        <img
+          class="profile-photo"
+          src="profile.jpg"
+          alt="Portrait of Megan Creer"
+          width="160"
+          height="160"
+        />
+
+        <div>
+          <p class="eyebrow">Curriculum Vitae</p>
+          <h1>Megan Creer</h1>
+          <p class="role">Information Technology Student</p>
+          <p class="student-details">
+            4th Year · BSIT 4B · Davao del Norte State College
+          </p>
+        </div>
+      </header>
+
+      <div class="layout">
+        <!-- Left column -->
+        <aside class="sidebar">
+          <section>
+            <h2>Contact</h2>
+
+            <dl class="contact-list">
+              <dt>Phone</dt>
+              <dd>
+                <a href="tel:+639500130955">09500130955</a>
+              </dd>
+
+              <dt>Email</dt>
+              <dd>
+                <a href="mailto:creermegan@gmail.com"> creermegan@gmail.com </a>
+              </dd>
+
+              <dt>Facebook</dt>
+              <dd>Megan Creer</dd>
+
+              <dt>GitHub</dt>
+              <dd>
+                <a href="https://github.com/creermegan-dev">
+                  github.com/creermegan-dev
+                </a>
+              </dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>Education</h2>
+            <p class="degree">Bachelor of Science in Information Technology</p>
+            <p>Davao del Norte State College</p>
+            <p class="muted">Currently enrolled</p>
+            <p class="muted">4th Year · BSIT 4B</p>
+          </section>
+
+          <section>
+            <h2>Professional Skills</h2>
+            <ul class="professional-skills">
+              <li>Team collaboration</li>
+              <li>Communication and presentation</li>
+              <li>Task organization and time management</li>
+              <li>Problem-solving</li>
+              <li>Attention to detail</li>
+              <li>Adaptability and continuous learning</li>
+            </ul>
+          </section>
+        </aside>
+
+        <!-- Right column -->
+        <div class="content">
+          <section>
+            <h2>About Me</h2>
+            <p>
+              I am a fourth-year Bachelor of Science in Information Technology
+              student at Davao del Norte State College, with an interest in
+              application development and user interface design.
+            </p>
+            <p>
+              I am currently working with my team on our capstone project,
+              developing an application using Flutter and Dart. Through this
+              project, I apply my classroom knowledge, strengthen my programming
+              skills, and collaborate on practical development tasks.
+            </p>
+            <p>
+              I aim to create useful, accessible applications while continuing
+              to improve my skills and learn new technologies.
+            </p>
+          </section>
+
+          <section>
+            <h2>Technical Skills</h2>
+
+            <ul class="skill-list">
+              <li>
+                <strong>Web Development</strong>
+                <span>HTML and CSS</span>
+              </li>
+              <li>
+                <strong>Application Development</strong>
+                <span>Flutter and Dart</span>
+              </li>
+              <li>
+                <strong>UI Design and Prototyping</strong>
+                <span>Figma</span>
+              </li>
+              <li>
+                <strong>Database Management</strong>
+                <span>MySQL</span>
+              </li>
+              <li>
+                <strong>Version Control</strong>
+                <span>Git and GitHub</span>
+              </li>
+              <li>
+                <strong>Development Tools</strong>
+                <span>Visual Studio Code</span>
+              </li>
+              <li>
+                <strong>Research and Documentation</strong>
+                <span>Academic writing and project documentation</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <footer>
+        IT 415 — Application Development and Emerging Technologies
+      </footer>
+    </main>
+  </body>
+</html>
