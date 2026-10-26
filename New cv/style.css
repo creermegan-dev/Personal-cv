@@ -78,6 +78,24 @@ img {
   gap: 10px 20px;
 }
 
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--burgundy);
+  color: white;
+  font-weight: 700;
+  transform: translateY(-150%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .nav-links a {
   font-size: 14px;
   font-weight: 600;
@@ -87,6 +105,53 @@ img {
 
 .nav-links a:hover {
   color: var(--rose);
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--burgundy);
+}
+
+.nav-links a[aria-current="page"]::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 3px;
+  border-radius: 2px;
+  background: var(--rose);
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 4px 0;
+  border-radius: 2px;
+  background: var(--burgundy);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* ===== HERO SECTION ===== */
@@ -266,6 +331,22 @@ a:focus-visible {
   border-radius: 5px;
 }
 
+button:focus-visible {
+  outline: 3px solid var(--rose);
+  outline-offset: 4px;
+}
+
+.reveal-ready {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal-ready.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ===== ANIMATIONS ===== */
 @keyframes fadeUp {
   from {
@@ -290,14 +371,58 @@ a:focus-visible {
 /* ===== TABLET RESPONSIVENESS ===== */
 @media (max-width: 900px) {
   .navbar {
-    flex-direction: column;
-    gap: 14px;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px 20px;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 18px 40px rgba(109, 41, 72, 0.14);
+  }
+
+  .js .nav-links {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 6%;
+    display: none;
+    width: min(320px, 88vw);
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+  }
+
+  .js .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"] {
+    background: var(--blush);
+  }
+
+  .nav-links a[aria-current="page"]::after {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  body.menu-open {
+    overflow: hidden;
   }
 
   .hero {
@@ -341,11 +466,11 @@ a:focus-visible {
   }
 
   .nav-links {
-    gap: 10px 14px;
+    gap: 4px;
   }
 
   .nav-links a {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .hero {
@@ -383,6 +508,12 @@ a:focus-visible {
 
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
+  .reveal-ready {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   html {
     scroll-behavior: auto;
   }
@@ -852,7 +983,7 @@ a:focus-visible {
 
 .social-links {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 230px));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 230px));
   justify-content: center;
   gap: 14px;
   margin: 14px 0 28px;
