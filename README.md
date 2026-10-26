@@ -44,10 +44,7 @@ College and an aspiring software developer.
 
 - **GitHub repository:** https://github.com/creermegan-dev/Personal-cv
 - **LinkedIn:** https://www.linkedin.com/in/megan-creer-141213447/
-- **Live website:** Deployment pending
-
-The live website URL will be added after the final version is deployed to
-Vercel.
+- **Live website:** https://personal-cv-xi-ten.vercel.app/
 
 ## Run Locally
 
