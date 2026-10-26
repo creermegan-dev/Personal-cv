@@ -73,7 +73,9 @@ img {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px 20px;
 }
 
 .nav-links a {
@@ -411,6 +413,12 @@ a:focus-visible {
 }
 
 /* ===== EDUCATION ===== */
+.education-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
 .education-card {
   display: flex;
   align-items: flex-start;
@@ -419,6 +427,10 @@ a:focus-visible {
   border: 1px solid var(--border);
   padding: 30px;
   border-radius: 20px;
+}
+
+.education-current {
+  grid-column: 1 / -1;
 }
 
 .education-icon {
@@ -430,6 +442,8 @@ a:focus-visible {
   display: grid;
   place-items: center;
   font-size: 29px;
+  color: var(--burgundy);
+  font-weight: 800;
 }
 
 .education-card h3 {
@@ -908,6 +922,14 @@ a:focus-visible {
 
 /* ===== RESPONSIVE LAYOUT ===== */
 @media (max-width: 850px) {
+  .education-list {
+    grid-template-columns: 1fr;
+  }
+
+  .education-current {
+    grid-column: auto;
+  }
+
   .skills-grid,
   .achievement-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -915,10 +937,10 @@ a:focus-visible {
 }
 
 @media (max-width: 600px) {
-
   .social-links {
     grid-template-columns: minmax(0, 1fr);
   }
+
   .skills-grid,
   .projects-grid,
   .achievement-grid {
