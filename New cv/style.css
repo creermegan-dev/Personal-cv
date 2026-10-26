@@ -245,6 +245,20 @@ img {
   font-size: 16px;
 }
 
+.career-objective {
+  margin-top: 24px;
+  padding: 22px 24px;
+  border-left: 4px solid var(--rose);
+  border-radius: 0 16px 16px 0;
+  background: var(--blush);
+}
+
+.career-objective h3 {
+  margin-bottom: 7px;
+  color: var(--burgundy);
+  font-size: 18px;
+}
+
 /* ===== ACCESSIBILITY ===== */
 a:focus-visible {
   outline: 3px solid var(--rose);
@@ -805,6 +819,24 @@ a:focus-visible {
   flex-wrap: wrap;
   gap: 15px;
   margin: 28px 0;
+}
+
+.contact-details {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0 auto 25px;
+  color: #ffe1ed;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.contact-details a {
+  color: white;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .contact-action {
